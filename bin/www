@@ -17,25 +17,8 @@ server.on('listening', onListening);
 
 //socket.io
 const io = require('socket.io')(server);
-
-let messages = [
-    {user: 'Admin', message: 'Olá amigos!'},
-    {user: 'Admin', message: 'Aproveitem a conversa'}
-];
-io.on('connection', socket => {
-    console.log('Conectado', socket.id);
-    socket.on('disconnect', () => {
-        console.log('user disconnected');
-    });
-
-    socket.emit('previousMessages', messages);
-
-    socket.on('chatMessage', (user, message) => {
-        let result = {user: user, message: message};
-        messages.push(result);
-        socket.broadcast.emit('receivedMessage', result);
-    });
-});
+const socketIO = require('../config/socketIO');
+socketIO.config(io);
 
 /**
  * Normalize a port into a number, string, or false.
