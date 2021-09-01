@@ -14,5 +14,8 @@
     "morgan": "~1.9.1",
     "node-sass-middleware": "0.11.0",
     "socket.io": "^2.4.0"
+  },
+  "devDependencies": {
+    "trim-newlines": "^4.0.2"
   }
 }
